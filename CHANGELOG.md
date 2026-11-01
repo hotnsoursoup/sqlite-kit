@@ -8,7 +8,11 @@ requires otherwise.
 
 ## Unreleased
 
-No unreleased changes.
+### Changed
+
+- Version 0.3 aligns rusqlite 0.40.2, tokio-rusqlite 0.8 and deadpool-sqlite 0.14 on bundled SQLite 3.53.2, including the upstream WAL-reset fix.
+- Preserve async call, transaction and retry behavior through tokio-rusqlite's generic error API.
+- Raise the stated MSRV to Rust 1.95 to match deadpool-sqlite. Public rusqlite types now come from 0.40.2.
 
 ## 0.2.1 - 2026-06-01
 

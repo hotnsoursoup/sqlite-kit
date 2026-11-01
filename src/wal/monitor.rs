@@ -107,10 +107,7 @@ async fn run_checkpoint(checkpoint_conn: &Option<tokio_rusqlite::Connection>, re
     };
 
     match conn
-        .call(|c| {
-            c.execute_batch("PRAGMA wal_checkpoint(PASSIVE);")
-                .map_err(tokio_rusqlite::Error::Rusqlite)
-        })
+        .call(|c| c.execute_batch("PRAGMA wal_checkpoint(PASSIVE);"))
         .await
     {
         Ok(()) => {

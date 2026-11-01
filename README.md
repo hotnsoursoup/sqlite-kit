@@ -1,7 +1,7 @@
 # sqlite-kit
 
 [![CI](https://github.com/hotnsoursoup/sqlite-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/hotnsoursoup/sqlite-kit/actions/workflows/ci.yml)
-![MSRV](https://img.shields.io/badge/MSRV-1.77-blue)
+![MSRV](https://img.shields.io/badge/MSRV-1.95-blue)
 
 A pragmatic SQLite connection pool for Rust, with read/write split, WAL monitoring,
 migrations, and an optional write queue.
@@ -296,7 +296,7 @@ sqlite-kit = { version = "0.2", features = ["tracing"] }
 
 ## Minimum supported Rust version
 
-`1.77`. Bumps are not considered breaking until 1.0. This matches the current dependency graph (`deadpool-sqlite` 0.9 requires Rust 1.77+).
+`1.95`, matching `deadpool-sqlite` 0.14. Version 0.3 uses rusqlite 0.40.2 and bundled SQLite 3.53.2, which includes the upstream WAL-reset fix.
 
 ## Status
 
