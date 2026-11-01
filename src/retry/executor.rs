@@ -142,7 +142,7 @@ where
             }
             Err(e) => {
                 // Check if it's a wrapped sqlite error that's retryable
-                if let PoolError::AsyncSqlite(tokio_rusqlite::Error::Rusqlite(re)) = &e {
+                if let PoolError::AsyncSqlite(tokio_rusqlite::Error::Error(re)) = &e {
                     if is_retryable_error(re) {
                         last_error = Some(re.to_string());
                         if attempt + 1 < config.max_attempts {

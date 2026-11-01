@@ -16,8 +16,8 @@ cargo doc --all-features --no-deps
 MSRV check:
 
 ```bash
-cargo +1.77.0 check --lib --all-features
-cargo +1.77.0 test --lib --all-features
+cargo +1.95.0 check --lib --all-features
+cargo +1.95.0 test --lib --all-features
 ```
 
 ## Compatibility rules

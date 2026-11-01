@@ -37,7 +37,7 @@ impl AsyncConnection {
 
         let config = config.clone();
 
-        conn.call(move |conn| {
+        conn.call(move |conn| -> rusqlite::Result<()> {
             conn.execute_batch("PRAGMA journal_mode = WAL;")?;
             configure_connection(conn, &config)?;
             apply_init_hook(conn, &config.init_hook)?;
@@ -60,10 +60,7 @@ impl AsyncConnection {
             + 'static,
         R: Send + 'static,
     {
-        self.conn
-            .call(move |conn| f(conn).map_err(tokio_rusqlite::Error::Rusqlite))
-            .await
-            .map_err(PoolError::from)
+        self.conn.call(f).await.map_err(PoolError::from)
     }
 
     /// Execute a transaction on the connection.

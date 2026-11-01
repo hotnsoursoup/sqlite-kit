@@ -1,8 +1,8 @@
 [package]
 name = "sqlite-kit"
-version = "0.2.1"
+version = "0.3.0"
 edition = "2021"
-rust-version = "1.77"
+rust-version = "1.95"
 description = "High-performance SQLite connection pool with read/write split, WAL monitoring, and migration support"
 license = "MIT"
 repository = "https://github.com/hotnsoursoup/sqlite-kit"
@@ -21,14 +21,14 @@ tracing = ["dep:tracing"]
 [dependencies]
 # Async runtime
 tokio = { version = "1", features = ["sync", "time", "fs", "macros", "rt"] }
-tokio-rusqlite = "0.6"
+tokio-rusqlite = "=0.8.0"
 
 # Connection pooling
-deadpool = "0.12"
-deadpool-sqlite = "0.9"
+deadpool = "0.13.1"
+deadpool-sqlite = "=0.14.0"
 
-# SQLite
-rusqlite = { version = "0.32", features = ["bundled", "modern_sqlite", "backup"] }
+# SQLite 3.53.2 includes the upstream WAL-reset fix.
+rusqlite = { version = "=0.40.2", features = ["bundled", "modern_sqlite", "backup"] }
 
 # Error handling
 thiserror = "2"
